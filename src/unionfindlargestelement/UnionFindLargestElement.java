@@ -51,12 +51,12 @@ public class UnionFindLargestElement {
         }
 
         public boolean connected(int p, int q) {
-            return find(p) == find(q);
+            return this.ids[find(p)] == this.ids[find(q)];
         }
 
         public void union(int p, int q) {
-            int rootP = find(p);
-            int rootQ = find(q);
+            int rootP = this.ids[find(p)];
+            int rootQ = this.ids[find(q)];
 
             if (rootP == rootQ) {
                 return;
@@ -75,7 +75,7 @@ public class UnionFindLargestElement {
         }
 
         public boolean allSitesConnected() {
-            return this.roots == 1;
+            return this.roots <= 1;
         }
 
         public void validateEntries(int index) {
@@ -90,7 +90,7 @@ public class UnionFindLargestElement {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("network.in"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("largest.in"));
         String linea = bufferedReader.readLine();
         if (linea != null) {
             int n = Integer.parseInt(linea);
